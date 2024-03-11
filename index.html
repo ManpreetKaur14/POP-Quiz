@@ -1,207 +1,94 @@
-<html lang="en-US">
+<!DOCTYPE html>
+   <html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<head>
-    <meta charset="utf-8">
-    <title>Quiz.js</title>
-    <style>
-        body {
-            margin: 1rem auto;
-            padding: 3rem;
-            font-family: sans-serif;
-        }
+      <!--=============== FAVICON ===============-->
+      <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
 
-        header {
-            width: 50%;
-            margin: 1em auto;
-        }
+      <!--=============== REMIXICONS ===============-->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
 
-        main {
-            min-width: 25rem;
-            max-width: 50%;
-            margin: 0px auto;
-            display: flex;
-            flex-direction: column;
-        }
+      <!--=============== SWIPER CSS ===============-->
+      <link rel="stylesheet" href="">
 
-        #statement {
-            border: 1px solid black;
-            border-radius: 0.5rem;
-            box-shadow: 5px 5px 5px gray;
-            padding: 1rem;
-            font-size: x-large;
-            text-align: center;
-            margin: 1rem 0px;
-            min-height: 2em;
-        }
+      <!--=============== CSS ===============-->
+      <link rel="stylesheet" href="assets/css/styles.css">
 
-        .hidden {
-            display: none;
-        }
+      <title>Responsive book website - Bedimcode</title>
+   </head>
+   <body>
+      <!--==================== HEADER ====================-->
+      <header class="header" id="header">
+         <h1>hello
+            
+         </h1>
+      </header>
 
-        #options {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-        }
+      <!--==================== SEARCH ====================-->
+      <div class="search" id="search-content">
+         
+      </div>
 
-        button {
-            padding: 0.5rem;
-            font-size: medium;
-            border-radius: 5px;
-        }
+      <!--==================== LOGIN ====================-->
+      <div class="login grid" id="login-content">
+         
+      </div>
 
-        #explanation, #score {
-            padding: 1rem;
-            text-align: center;
-        }
+      <!--==================== MAIN ====================-->
+      <main class="main">
+         <!--==================== HOME ====================-->
+         <section class="home section" id="home">
+            
+         </section>
 
-        .correctclr {
-            background-color: lightgreen;
-        }
+         <!--==================== SERVICES ====================-->
+         <section class="services section">
+            
+         </section>
 
-        .incorrectclr {
-            background-color: lightpink;
-        }
-        #score{
-            text-align: center;
-        }
-    </style>
-</head>
+         <!--==================== FEATURED ====================-->
+         <section class="featured section" id="featured">
+            
+         </section>
 
-<body>
-    <header>
-        <h1>Quiz.js</h1>
-        <p>Do you know JS? Find out!</p>
-        <div id="score">
-            Score: <span id="correct">0</span> / <span id="completed">0</span>
-        </div>
-    </header>
+         <!--==================== DISCOUNT ====================-->
+         <section class="discount section" id="discount">
+            
+         </section>
 
-    <main>
-        <div id="statement">
+         <!--==================== NEW BOOKS ====================-->
+         <section class="new section" id="new">
+            
+         </section>
 
-        </div>
+         <!--==================== JOIN ====================-->
+         <section class="join section">
+            
+         </section>
 
-        <div id="options">
-            <button name="true" value="true">true</button>
-            <button name="false" value="false">false</button>
-        </div>
+         <!--==================== TESTIMONIAL ====================-->
+         <section class="testimonial section" id="testimonial">
+            
+         </section>
+      </main>
 
-        <div id="explanation" class="hidden"> </div>
+      <!--==================== FOOTER ====================-->
+      <footer class="footer">
+         
+      </footer>
 
-        <button name="nxtBtn" value="nxtBtn" disabled>Next Question</button>
+      <!--========== SCROLL UP ==========-->
+      
 
-    </main>
+      <!--=============== SCROLLREVEAL ===============-->
+      <script src=""></script>
 
-</body>
+      <!--=============== SWIPER JS ===============-->
+      <script src=""></script>
 
-<script type="text/javascript">
-
-
-    const statement = document.getElementById("statement");
-    const optionButtons = document.getElementById("options").children;
-    const explanation = document.getElementById("explanation");
-    const nextBtn = document.getElementsByName("nxtBtn")[0];
-    let correct = 0;
-    let completed = 0;
-    const facts =
-            [
-            {
-                "statement": "JavaScript was invented in 1995",
-                "answer": "true",
-                "explanation": "Brendan Eich created JS at Netscape in 1995. The initial version of the language was written in just 10 days."
-            },
-            {
-                "statement": "Strings in JS are editable values",
-                "answer": "false",
-                "explanation": "In JavaScript strings are immutable values, meaning they cannot be edited; however, they can replaced with new, different strings."
-            },
-            {
-                "statement": "1 + 1 === 2",
-                "answer": "true",
-                "explanation": "The plus operator gives the sum of two numbers."
-            },
-            {
-                "statement": "'1' + '1' === '2'",
-                "answer": "false",
-                "explanation": "The plus operator concatenates (joins together) strings, so '1' + '1' === '11'."
-            },
-            {
-                "statement": "typeof ['J', 'S'] === 'array'",
-                "answer": "false",
-                "explanation": "Arrays have the type 'object'. In JS, everything is either a primitive data type (e.g. 'string', 'number') or an object. Arrays are a kind of object with some special properties.  "
-            }
-        ];
-
-        function disable(button) {
-            button.setAttribute("disabled", "");
-        }
-
-        function enable(button) {
-            button.removeAttribute("disabled");
-        }
-        function hide(element) {
-                element.classList.add("hidden");
-            }
-
-            function show(element) {
-                element.classList.remove("hidden");
-            }
-
-    for (let option of optionButtons) {
-     option.addEventListener('click', (event) => {
-        for (let button of optionButtons)
-         {
-            disable(button);
-         }
-
-        if (facts.length > 0){
-            enable(nextBtn);
-            } else {
-                nextBtn.textContent = "No more questions!"}
-
-                 const guess = event.target.value;
-
-        function isCorrect(guess) {
-             return guess === fact.answer;}
-
-         if (isCorrect(guess)) {
-                        
-                        event.target.classList.add("correctclr");
-                        correct += 1;
-                    } else {
-                       event.target.classList.add("incorrectclr");
-                    }
-
-                    explanation.textContent = fact.explanation;
-                    show(explanation);
-
-                    completed += 1;
-                    document.getElementById("correct").textContent = correct;
-                    document.getElementById("completed").textContent = completed;
-                })
-            }
-
-
-
-
-
-     function nextQues() {
-            fact = facts.shift();
-            document.getElementById("statement").textContent = fact.statement;
-            for (let option of optionButtons)
-            {
-             option.classList.remove("correctclr");
-             option.classList.remove("incorrectclr");
-             enable(option);
-            }
-
-            disable(nextBtn);
-            hide(explanation);
-        }
-        nextBtn.addEventListener('click', nextQues);
-
-    nextQues();
-
-  </script>
+      <!--=============== MAIN JS ===============-->
+      <script src="assets/js/main.js"></script>
+   </body>
 </html>
