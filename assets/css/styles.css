@@ -255,10 +255,10 @@ font-size: 1.25rem;
   padding-inline: 1rem;
 }
 
-.search__icon{
+/* .search__icon{
   font-size: 1.25rem;
   color: var(--title-color);
-}
+} */
 
 .search__input{
   width:100%;
